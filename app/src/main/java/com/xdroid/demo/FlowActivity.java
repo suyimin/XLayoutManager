@@ -10,14 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.xdroid.layoutmanager.flow.FlowLayoutManager;
 import com.xdroid.adapter.rv.CommonAdapter;
 import com.xdroid.adapter.rv.ViewHolder;
+import com.xdroid.layoutmanager.flow.FlowLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class FlowActivity extends AppCompatActivity {
     private Context mContext;
     private RecyclerView mRv;
     private CommonAdapter<TestBean> mAdapter;
@@ -64,31 +64,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-/*                c.drawColor(Color.GREEN);
-                View childAt = recyclerView.getChildAt(viewHolder.getLayoutPosition() - 1);
-                childAt.setScaleX(1.5f);
-                childAt.setScaleY(1.5f);*/
-                Log.e("swipecard", "onChildDraw()  viewHolder = [" + viewHolder + "], dX = [" + dX + "], dY = [" + dY + "], actionState = [" + actionState + "], isCurrentlyActive = [" + isCurrentlyActive + "]");
-                //小马的效果
-/*                if (isCurrentlyActive) {
+                if (isCurrentlyActive) {
                     View ViewLast1 = recyclerView.getChildAt(viewHolder.getLayoutPosition() - 1);
                     ViewLast1.setTranslationX(dX / 2);
                     ViewLast1.setRotation(10);
-                    //ViewLast1.setTranslationY(dY/2);
+                    ViewLast1.setTranslationY(dY/2);
                     View ViewLast2 = recyclerView.getChildAt(viewHolder.getLayoutPosition() - 2);
                     ViewLast2.setTranslationX(dX / 4);
                     ViewLast2.setRotation(5);
-                    //ViewLast2.setTranslationY(dY / 4);
+                    ViewLast2.setTranslationY(dY / 4);
                 } else {
-                    //rollBack(viewHolder);
-                }*/
-
-
-                //人人影视的效果
-                if (isCurrentlyActive) {
-
+                    rollBack(viewHolder);
                 }
-
             }
 
             public void rollBack(RecyclerView.ViewHolder viewHolder) {
@@ -105,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnFlow).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRv.setLayoutManager(new FlowLayoutManager());//自己写的流式布局
+                mRv.setLayoutManager(new FlowLayoutManager());
                 itemTouchHelper.attachToRecyclerView(null);
             }
         });
@@ -113,23 +100,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mRv.setLayoutManager(new OverLayCardLayoutManager();
                 itemTouchHelper.attachToRecyclerView(mRv);
             }
         });
-
-
-/*        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
-        mRv.setLayoutManager(gridLayoutManager);
-        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                if (position==1){
-                    return gridLayoutManager.getSpanCount();
-                }
-                return 1;
-            }
-        });*/
     }
 
     private int i = 0;

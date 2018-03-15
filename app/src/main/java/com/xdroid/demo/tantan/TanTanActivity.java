@@ -59,14 +59,10 @@ public class TanTanActivity extends AppCompatActivity {
 
         final TanTanCallback callback = new TanTanCallback(mRv, mAdapter, mDatas);
 
-        //测试竖直滑动是否已经不会被移除屏幕
-        //callback.setHorizontalDeviation(Integer.MAX_VALUE);
-
         final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
         itemTouchHelper.attachToRecyclerView(mRv);
 
     }
-
 
 }
 

@@ -23,7 +23,6 @@ public class SwipeCardActivity extends AppCompatActivity {
     CommonAdapter<SwipeCardBean> mAdapter;
     List<SwipeCardBean> mDatas;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +47,6 @@ public class SwipeCardActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
         itemTouchHelper.attachToRecyclerView(mRv);
 
-
         findViewById(R.id.btnRefresh).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +56,4 @@ public class SwipeCardActivity extends AppCompatActivity {
         });
 
     }
-
-
 }

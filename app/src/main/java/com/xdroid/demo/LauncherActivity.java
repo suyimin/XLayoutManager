@@ -21,7 +21,7 @@ public class LauncherActivity extends AppCompatActivity {
         findViewById(R.id.btnFlow).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LauncherActivity.this, MainActivity.class));
+                startActivity(new Intent(LauncherActivity.this, FlowActivity.class));
             }
         });
         findViewById(R.id.btnSwipeCard).setOnClickListener(new View.OnClickListener() {
